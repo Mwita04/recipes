@@ -1,5 +1,5 @@
 // ignore_for_file: use_key_in_widget_constructors
-
+import 'recipe_detail.dart';
 import 'package:flutter/material.dart';
 import 'recipe.dart';
 
@@ -93,11 +93,24 @@ class _MyHomePageState extends State<MyHomePage> {
           // 6
           itemBuilder: (BuildContext context, int index) {
             // 7
-            //
-            // TODO: Add GestureDetector
-            return buildRecipeCard(Recipe.samples[index]);
+            return GestureDetector(
+              // 8
+              onTap: () {
+                // 9
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      // 10
 
-            return Text(Recipe.samples[index].label);
+                      return RecipeDetail(recipe: Recipe.samples[index]);
+                    },
+                  ),
+                );
+              },
+              // 11
+              child: buildRecipeCard(Recipe.samples[index]),
+            );
           },
         ),
       ),
